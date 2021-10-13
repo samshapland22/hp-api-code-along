@@ -17,8 +17,23 @@ fetch("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
       option.textContent = character.name;
       dropDown.append(option);
     }
-  });
+    //STEP 3 <--------------------------------DISPLAY SELECTED CHARACTER'S INFO------------------------------------------->
 
-//STEP 3 <--------------------------------DISPLAY SELECTED CHARACTER'S INFO------------------------------------------->
+    let currentName = document.querySelector("#name");
+    const dob = document.querySelector("#dob");
+    const patronus = document.querySelector("#patronus");
+    const headshot = document.querySelector("#headshot");
+
+    let selectedCharacter;
+
+    dropDown.addEventListener("change", () => {
+      for (let character of characters) {
+        if (dropDown.value === character.name) {
+          selectedCharacter = character;
+          console.log(character);
+        }
+      }
+    });
+  });
 
 //STEP 4 <------------------ADD SELECTED CHARACTER'S NAME TO TEAM MEMBERS LIST ON BUTTON CLICK------------------------>
