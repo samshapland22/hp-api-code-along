@@ -10,8 +10,8 @@
 </head>
 <body>
     <header>
-        <img src="assets/logo.png">
-        <img src="assets/crest.png">
+        <img id='logo' src="assets/logo.png">
+        <img id='crest' src="assets/crest.png">
     </header>
     <select id='dropdown'>  
         <option value='default'>Pick a Character</option>  
@@ -23,6 +23,9 @@
             <h2 id='name'></h2>
             <h3 id='patronus'></h3>
             <h3 id='dob'></h3>
+            <!-- putting style="display:none" on this button hides it from view at first. 
+            Once a character is picked, we can make it visible using JavaScript in the script.js file on line 45 -->
+            <button id='addButton' style="display:none">Add to Team</button>
 
         </section>
         <section id='team'>

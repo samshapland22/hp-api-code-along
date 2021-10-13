@@ -5,18 +5,20 @@ fetch("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
     return res.json();
   })
   .then((characters) => {
+    //"characters" is the parsed data that we received from our API call. It is an array of objects.
     console.log(characters);
     //STEP 2 <------------------------USE DATA TO ADD CHARACTER NAMES TO THE DROPDOWN MENU------------------------------->
 
     let dropDown = document.querySelector("#dropdown");
 
-    //add each character's name from the array of data called "characters" to the dropdown menu
+    //add each character's name from the characters array to the dropdown menu
     for (let character of characters) {
       const option = document.createElement("option");
       option.setAttribute("value", character.name);
       option.textContent = character.name;
       dropDown.append(option);
     }
+
     //STEP 3 <--------------------------------DISPLAY SELECTED CHARACTER'S INFO------------------------------------------->
 
     let currentName = document.querySelector("#name");
@@ -26,14 +28,37 @@ fetch("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
 
     let selectedCharacter;
 
+    //add an event listener for when the drop down menu is changed. The selected character's
+    //info will be displayed on the screen using all of our selected elements (currentName, dob, patronus, and headshot)
     dropDown.addEventListener("change", () => {
       for (let character of characters) {
         if (dropDown.value === character.name) {
-          selectedCharacter = character;
           console.log(character);
+          selectedCharacter = character;
+          currentName.textContent = character.name;
+          dob.textContent = character.dateOfBirth;
+          patronus.textContent = character.patronus;
+          headshot.src = character.image;
+
+          //The addButton is set to "display:none" by default in index.html.
+          //Line 45 is here to make the button visible once a character is picked.
+          addButton.setAttribute("style", "display:block");
         }
       }
     });
-  });
 
-//STEP 4 <------------------ADD SELECTED CHARACTER'S NAME TO TEAM MEMBERS LIST ON BUTTON CLICK------------------------>
+    //STEP 4 <------------------ADD SELECTED CHARACTER'S NAME TO TEAM MEMBERS LIST ON BUTTON CLICK------------------------>
+
+    //use querySelector to select our unordered list and our "Add to Team" button
+    const membersUL = document.querySelector("#members");
+    let addButton = document.querySelector("#addButton");
+
+    //set and event listener on the "Add to Team" button. Every time it gets clicked,
+    //we create a new li, give it the textContent of our selectedCharacter's name, then append it
+    // to the unordered list, which is called "membersUL"
+    addButton.addEventListener("click", () => {
+      let newMember = document.createElement("li");
+      newMember.textContent = selectedCharacter.name;
+      membersUL.append(newMember);
+    });
+  });
