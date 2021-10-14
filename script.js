@@ -2,7 +2,7 @@
 fetch("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
   .then((res) => {
     //"res" is the unparsed JSON data that we received from our API call.
-    //.json() parses the json to make it a javascript object so that we can use it. (data in JSON format is unusable in JavaScript)
+    //.json() parses the JSON to make it a javascript object so that we can use it. (data in JSON format is unusable in JavaScript)
     return res.json();
   })
   .then((characters) => {
