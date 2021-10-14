@@ -43,6 +43,9 @@ h3 {
 }
 
 #headshot {
+  /* standardizing the size of all character headshots
+   by setting the same width for all of them. The border-radius of 100% 
+   makes the headshots circular/oval shaped*/
   width: 15em;
   border-radius: 100%;
 }
