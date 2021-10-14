@@ -1,11 +1,12 @@
 //STEP 1 <-------------------------------------------FETCH DATA------------------------------------------------------->
 fetch("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
   .then((res) => {
-    //parse the json to make it a javascript object so that we can use it.
+    //"res" is the unparsed JSON data that we received from our API call.
+    //.json() parses the json to make it a javascript object so that we can use it. (data in JSON format is unusable in JavaScript)
     return res.json();
   })
   .then((characters) => {
-    //"characters" is the parsed data that we received from our API call. It is an array of objects.
+    //"characters" is the parsed data that we received from our API call. It is a JavaScript array of objects.
     console.log(characters);
     //STEP 2 <------------------------USE DATA TO ADD CHARACTER NAMES TO THE DROPDOWN MENU------------------------------->
 
