@@ -54,9 +54,9 @@ fetch("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
     const membersUL = document.querySelector("#members");
     let addButton = document.querySelector("#addButton");
 
-    //set and event listener on the "Add to Team" button. Every time it gets clicked,
-    //we create a new li, give it the textContent of our selectedCharacter's name, then append it
-    // to the unordered list, which is called "membersUL"
+    //set an event listener on the "Add to Team" button. Every time this button gets clicked,
+    //we create a new li called "newMember" using document.createElement, then set its textContent to be our selectedCharacter's name, then append it
+    //to the unordered list, which is called "membersUL"
     addButton.addEventListener("click", () => {
       let newMember = document.createElement("li");
       newMember.textContent = selectedCharacter.name;
