@@ -1,5 +1,5 @@
 //STEP 1 <-------------------------------------------FETCH DATA------------------------------------------------------->
-fetch("http://hp-api.herokuapp.com/api/characters/house/gryffindor")
+fetch("https://hp-api.herokuapp.com/api/characters/house/gryffindor")
   .then((res) => {
     //"res" is the unparsed JSON data that we received from our API call.
     //.json() parses the JSONcod to make it a javascript object so that we can use it. (data in JSON format is unusable in JavaScript)
